@@ -1,0 +1,22 @@
+.forcast-panel {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.forcast-panel .hourly-wrapper {
+  display: inline-block;
+  width: 25%;
+  height: 340px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.forcast-panel .hourly-wrapper > div {
+  border: 1px solid red;
+}
+
+.forcast-panel .hourly-wrapper h3 {
+  margin: 0;
+  padding: 1rem;
+}
