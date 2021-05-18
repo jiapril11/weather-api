@@ -1,5 +1,4 @@
 (function () {
-  $("button").on("click", function () {
     // 결과 표시 프레임
     const $forcastPanel = $(".forcast-panel");
     const $title = $(".title");
@@ -8,20 +7,8 @@
     const key = "4e67a153a370f2cd2ef8117b50c8401c";
 
     // 도시 정보 초기화
-    let city;
-    let url;
+    const url = "http://api.openweathermap.org/data/2.5/forecast?q=seoul&lang=kr&mode=json&units=metric&appid=" + key;
 
-    city = "seoul";
-    city = this.value;
-
-    url =
-      "http://api.openweathermap.org/data/2.5/forecast?q=" +
-      city +
-      "&lang=kr&mode=json&units=metric&appid=" +
-      key;
-
-    // 도시 이름 표시
-    $title.text(city.toUpperCase());
 
     // 날씨 데이터 객체
     let forcastObject = $.ajax(url);
@@ -30,8 +17,7 @@
       .then((data) => {
         // 데이터 성공시 실행
         forcastResult(data);
-        console.log("Date");
-        console.log(data.list[0].dt_txt.toLocaleString());
+        // console.log("Date");
       })
       .fail((err) => {
         // 데이터 실패시 실행
@@ -40,15 +26,12 @@
 
     // 데이터 받아오기 성공시 실행항 함수
     function forcastResult(data) {
-      console.clear();
-      console.log(data);
-      $forcastPanel.children().remove();
-
       let onlyDate;
       let currDate;
 
-      data.list.map((eachList) => {
-        let dateString = new Date(eachList.dt_txt).toLocaleString();
+      $forcastPanel.children().remove();
+
+      $.map(data.list, (eachList) => {
         currDate = new Date(eachList.dt_txt).toLocaleDateString();
         currTime = new Date(eachList.dt_txt).toLocaleTimeString();
 
@@ -57,8 +40,6 @@
           $forcastPanel.append(
             $('<div class="daily-forcast">').append($("<h2>").text(onlyDate))
           );
-          // console.log(onlyDate);
-          // console.log(currTime);
         }
 
         $forcastPanel.append(
@@ -83,20 +64,6 @@
             )
           )
         );
-
-        // if(onlyDate !== currDate) {
-        //   onlyDate = currDate;
-        //   $forcastPanel.append(
-        //     $('<div class="daily-forcast">').append(
-        //       $('<h3>').text(onlyDate)
-        //     )
-        //   )
-        //   // console.log(onlyDate);
-        //   // console.log(currTime);
-        // } else {
-        //   // console.log(currTime);
-        // }
       });
     }
-  });
 })();

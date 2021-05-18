@@ -1,22 +1,57 @@
-.forcast-panel {
+body {
   width: 1200px;
   margin: 0 auto;
+}
+
+h1, h2, .select-city {
+  text-align: center;
+}
+
+.daily-forcast h2 {
+  margin-top: 80px;
 }
 
 .forcast-panel .hourly-wrapper {
   display: inline-block;
   width: 25%;
-  height: 340px;
   padding: 0.5rem;
   box-sizing: border-box;
   text-align: center;
 }
 
 .forcast-panel .hourly-wrapper > div {
-  border: 1px solid red;
+  border: 1px solid #eee;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
 }
 
 .forcast-panel .hourly-wrapper h3 {
   margin: 0;
   padding: 1rem;
+  color: #fff;
+  background-color: #444;
+}
+
+.forcast-panel .hourly-wrapper .icon-wrapper {
+  padding: 1rem 0 1.7rem;
+}
+
+.forcast-panel .hourly-wrapper .icon-wrapper p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.forcast-panel .hourly-wrapper ul {
+  padding-top: 1.3rem;
+  padding-left: 80px;
+  padding-bottom: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-top: 1px solid #d2d2d2;
+  text-align: left;
+}
+
+.forcast-panel .hourly-wrapper ul li {
+  margin-bottom: 0.2rem;
 }
